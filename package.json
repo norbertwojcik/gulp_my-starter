@@ -1,0 +1,36 @@
+{
+  "name": "gulp_my-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Norbert W",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-changed": "*",
+    "gulp-clean-css": "*",
+    "gulp-compass": "*",
+    "gulp-concat": "*",
+    "gulp-html-replace": "*",
+    "gulp-htmlmin": "*",
+    "gulp-imagemin": "*",
+    "gulp-include": "*",
+    "gulp-sass": "*",
+    "compass-mixins": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "*",
+    "run-sequence": "*",
+    "del": "*",
+    "gulp": "*"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

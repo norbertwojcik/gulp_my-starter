@@ -11,7 +11,7 @@
   ],
   "author": "Norbert W",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "browser-sync": "*",
     "gulp-autoprefixer": "*",
     "gulp-changed": "*",
@@ -29,8 +29,5 @@
     "run-sequence": "*",
     "del": "*",
     "gulp": "*"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1"
   }
 }

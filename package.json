@@ -1,6 +1,6 @@
 {
   "name": "gulp_my-starter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "",
   "scripts": {
@@ -22,6 +22,7 @@
     "gulp-htmlmin": "*",
     "gulp-imagemin": "*",
     "gulp-include": "*",
+    "gulp-plumber": "*",
     "gulp-sass": "*",
     "compass-mixins": "*",
     "gulp-sourcemaps": "*",

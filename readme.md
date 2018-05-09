@@ -1,18 +1,15 @@
 # My Gulp starter for projects #
 
-## 1.Global installation ##
-* npm install -g gulp
-
-## 2. Install npm ##
+## 1. Install npm ##
 * npm install 
 
-## 3. Install npm plugins ##
+## 2. Install npm plugins ##
 * npm install --save-dev ........ / npm i -D .......
 
-## 4. Build project ##
+## 3. Build project ##
 * gulp build
 
-## 5. Watch file ##
+## 4. Watch file ##
 * gulp
 
 ## Update modules ##

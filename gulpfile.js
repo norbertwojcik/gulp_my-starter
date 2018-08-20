@@ -86,7 +86,6 @@ gulp.task('img', function() {
 gulp.task('fonts', function() {
   return gulp.src('src/fonts/**/*.*')
     .pipe(plumber())
-    .pipe(changed('dist/fonts/'))
     .pipe(gulp.dest('dist/fonts/'));
 });
 
@@ -97,11 +96,11 @@ gulp.task('html', function() {
       'css': 'css/style.css',
       'js': 'js/script-my.js'
     }))
-    // .pipe(htmlMin({
-    //   sortAttributes: true,
-    //   sortClassName: true,
-    //   collapseWhitespace: true
-    // }))
+    .pipe(htmlMin({
+      sortAttributes: true,
+      sortClassName: true,
+      collapseWhitespace: true
+    }))
     .pipe(gulp.dest('dist/'))
     .pipe(browserSync.stream());
 });

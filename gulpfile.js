@@ -1,22 +1,23 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var sourcemaps = require('gulp-sourcemaps');
-//var compass = require('gulp-compass'); // mixiny do sass
-var plumber = require('gulp-plumber'); //w konsoli podaje miejsce wystapienia błedu
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var minifCSS = require('gulp-clean-css');
-var uglify = require('gulp-uglify'); //minifikacja JS
-var concat = require('gulp-concat'); //łączenie js i css w jeden plik
-var include = require("gulp-include"); //dołacanie do pliku JS zewnętrznych skryptów
-var imagemin = require('gulp-imagemin'); //kompresa plików graficznych
-var changed = require('gulp-changed'); //sprawdza w któryh plikach graficznych zaszła zmiana
-var htmlReaplce = require('gulp-html-replace'); //przetworzenie kilku plików css lub js w jeden  
+const gulp = require('gulp');
+const browserSync = require('browser-sync');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+//const compass = require('gulp-compass'); // mixiny do sass
+const plumber = require('gulp-plumber'); //w konsoli podaje miejsce wystapienia błedu
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const minifCSS = require('gulp-clean-css');
+const uglify = require('gulp-uglify'); //minifikacja JS
+const concat = require('gulp-concat'); //łączenie js i css w jeden plik
+const include = require("gulp-include"); //dołacanie do pliku JS zewnętrznych skryptów
+const imagemin = require('gulp-imagemin'); //kompresa plików graficznych
+const changed = require('gulp-changed'); //sprawdza w któryh plikach graficznych zaszła zmiana
+const htmlReaplce = require('gulp-html-replace'); //przetworzenie kilku plików css lub js w jeden  
                                                 //CSS -> <!-- build:css --> PLIKI CSS <!-- endbuild -->  
                                                 //JS->   <!-- build:js --> PLIKI JS <!-- endbuild  -->
-var htmlMin = require('gulp-htmlmin'); //minifikacja HTML
-var del = require('del'); //usuwanie
-var sequence = require('run-sequence'); //kolejność wykonywania taksów
+const htmlMin = require('gulp-htmlmin'); //minifikacja HTML
+const del = require('del'); //usuwanie
+const sequence = require('run-sequence'); //kolejność wykonywania taksów
 
 gulp.task('reload', function() {
   browserSync.reload();
@@ -68,6 +69,9 @@ gulp.task('js', function(){
         includePaths: [
             __dirname + "/node_modules"
         ]
+  }))
+  .pipe(babel({
+      presets: ['env']
   }))
 	.pipe(concat('script-my.js'))
 	.pipe(uglify())

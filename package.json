@@ -12,9 +12,14 @@
   "author": "Norbert W",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "*",
-    "gulp-sass": "*",
+    "compass-mixins": "*",
+    "del": "*",
+    "gulp": "*",
     "gulp-autoprefixer": "*",
+    "gulp-babel": "^7.0.1",
     "gulp-changed": "*",
     "gulp-clean-css": "*",
     "gulp-compass": "*",
@@ -25,11 +30,8 @@
     "gulp-include": "*",
     "gulp-plumber": "*",
     "gulp-sass": "*",
-    "compass-mixins": "*",
     "gulp-sourcemaps": "*",
     "gulp-uglify": "*",
-    "run-sequence": "*",
-    "del": "*",
-    "gulp": "*"
+    "run-sequence": "*"
   }
 }

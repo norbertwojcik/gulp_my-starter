@@ -1,8 +1,9 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var sourcemaps = require('gulp-sourcemaps');
-var compass = require('gulp-compass');
+//var compass = require('gulp-compass'); // mixiny do sass
 var plumber = require('gulp-plumber'); //w konsoli podaje miejsce wystapienia błedu
+var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var minifCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify'); //minifikacja JS
@@ -31,34 +32,23 @@ gulp.task('serve', function() {
   gulp.watch('src/*.*', function(){
     sequence('cleanHtml', ['html']) 
   });
-  gulp.watch('src/files/**', function(){ 
-    sequence('cleanFiles', ['files']) 
-  });
   gulp.watch('src/img/**', function(){
     sequence('cleanImg', ['img']) 
   }); 
-});
-
-gulp.task('files', function() {
-  return gulp.src('src/files/**/*')
-    .pipe(plumber())
-    .pipe(gulp.dest('dist/files/'));
-});
-
-gulp.task('fonts', function() {
-  return gulp.src('src/fonts/**/*')
-    .pipe(plumber())
-    .pipe(gulp.dest('dist/fonts/'));
+  gulp.watch('src/fonts/**', function(){
+    sequence('cleanFonts', ['fonts']) 
+  }); 
 });
 
 gulp.task('sass', function() {
   return gulp.src('src/scss/**/*.scss')
-    .pipe(plumber())
+    //  .pipe(plumber())                     //gdy compass
     .pipe(sourcemaps.init())
-    .pipe(compass({
-			css: 'dist/css',
-			sass: 'src/scss'
-		}))
+    .pipe(sass().on('error', sass.logError)) //jeśli używamy samego sass'a
+    // .pipe(compass({                       //jeśli chcemy używać compass
+		// 	css: 'dist/css',
+		// 	sass: 'src/scss'
+		// }))
     .pipe(autoprefixer({
       browsers: ['last 3 versions']
     }))
@@ -93,6 +83,13 @@ gulp.task('img', function() {
     .pipe(gulp.dest('dist/img/'));
 });
 
+gulp.task('fonts', function() {
+  return gulp.src('src/fonts/**/*.*')
+    .pipe(plumber())
+    .pipe(changed('dist/fonts/'))
+    .pipe(gulp.dest('dist/fonts/'));
+});
+
 gulp.task('html', function() {
   return gulp.src('src/*.*')
     .pipe(plumber())
@@ -106,6 +103,7 @@ gulp.task('html', function() {
     //   collapseWhitespace: true
     // }))
     .pipe(gulp.dest('dist/'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('clean', function() {
@@ -120,20 +118,20 @@ gulp.task('clean', function() {
 //   return del(['dist/js/**']);
 // });
 
-gulp.task('cleanFiles', function() {
-  return del(['dist/files/**']);
+gulp.task('cleanHtml', function() {
+  return del(['dist/*.html']);
 });
 
 gulp.task('cleanImg', function() {
   return del(['dist/img/**']);
 });
 
-gulp.task('cleanHtml', function() {
-  return del(['dist/*.html']);
+gulp.task('cleanFonts', function() {
+  return del(['dist/fonts/**']);
 });
 
 gulp.task('build', function() {
-  sequence('clean', ['html', 'js', 'sass', 'files', 'img']);
+  sequence('clean', ['html', 'js', 'sass', 'img', 'fonts']);
 });
 
 gulp.task('default', ['serve']);

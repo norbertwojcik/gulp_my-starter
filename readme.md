@@ -17,15 +17,17 @@ cd my-starter_gulp
 npm install
 ```
 
-### 4. Run default gulp task
+## 4. Build 
+```
+gulp build
+```
+
+### 5. Run default gulp task
 ```
 gulp
 ```
 
-## Build 
-```
-gulp build
-```
+
 
 ## List of npm packaged used
 

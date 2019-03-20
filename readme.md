@@ -4,12 +4,12 @@
 
 ### 1. Clone repo
 ```
-git clone https://github.com/norbiasz/my-starter_gulp
+git clone https://github.com/norbiasz/gulp3_starter
 ```
 
 ### 2. Go inside cloned repo
 ```
-cd my-starter_gulp
+cd gulp3_starter
 ```
 
 ### 3. Install all dependencies 
